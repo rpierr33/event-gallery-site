@@ -1,25 +1,3 @@
-let menu = document.querySelector('#header');
-let navbar = document.querySelector('.navbar');
-
-menu.addEventListener('click', () =>{
-    menu.classList.toggle('fa-times');
-    navbar.classList.toggle('nav-toggle');
-});
-
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar2").style.top = "0";
-  } else {
-    document.getElementById("navbar2").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
-}
-
-
-
-
 !(function(d){
   // Variables to target our base class,  get carousel items, count how many carousel items there are, set the slide to 0 (which is the number that tells us the frame we're on), and set motion to true which disables interactivity.
   var itemClassName = "carousel__photo";
