@@ -25,10 +25,10 @@
   text-transform: capitalize;
 }
 
-*::selection{
+/* *::selection{
   background:var(--pink);
   color:#fff;
-}
+} */
 
 
 html{
@@ -41,7 +41,7 @@ html{
 
 
 section{
-  padding:3rem 9%;
+  padding: 0rem 9%;
 }
 
 .btn{
@@ -72,26 +72,8 @@ section{
   text-align: center;
 }
 
-.heading h1{
-  font-size: 4rem;
-  color: #0d0e0d;
-  padding-bottom: 1rem;
-  text-transform: uppercase;
-}
 
-.wrapper {
-  font-family: Nebula;
-  -webkit-background-size: cover;
-  background-position: center center;
-  position: absolute;
-}
 
-/* border-radius: 5px 5px 0 0;
-    grid-area: nav-wrapper;
-    border-bottom: 1px solid var(--bordercolor);
-    display: flex;
-    justify-content: space-between;
-    align-items: center; */
 
 .header {
   width: 100%;
@@ -125,35 +107,6 @@ section{
 .logo h1 span{
   font-weight: 100;
 }
-
-
-.nav-area{
-  width: 100px;
-}
-
-.nav-area li{
-  height: 100%;
-  display: flex;
-  padding: 0 20px;
-}
-
-.nav-area a{
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  position: relative;
-  left: 1000px;
-  bottom: 60px
-}
-
-
-.nav-area a:hover{
-  color: #b3cccc;
-}
-
-
-
-
 
 header{
   position: fixed;
@@ -227,8 +180,8 @@ header{
  width: 1000px; 
  height: 400px;
  background: transparent;
- margin: 120px auto;
- display: flex;
+ margin: 50px auto;
+  display: flex;
  }
 
  .col {
@@ -306,91 +259,6 @@ h3 {
 
  /* Img container ends */
 
-/* Slide Section Begins*/
-
-.carousel-wrapper {
-  overflow: hidden;
-  width: 90%;
-}
-
-.carousel-wrapper * {
-  box-sizing: border-box;
-}
-
-.carousel {
-  transform-style: preserve-3d;
-  
-}
-.carousel__photo {
-  opacity: 0;
-  position: absolute;
-  top:0;
-  height: 600px;;
-  width: 100%;
-  margin: auto;
-  padding: 1rem 4rem;
-  z-index: 100;
-  transition: transform .5s, opacity .5s, z-index .5s;
-}
-
-.carousel__photo.initial,
-.carousel__photo.active {
-  opacity: 1;
-  position: relative;
-  z-index: 900;
-}
-
-.carousel__photo.prev,
-.carousel__photo.next {
-  z-index: 800;
-}
-.carousel__photo.prev {
-  transform: translateX(-100%); /* Move 'prev' item to the left */
-}
-.carousel__photo.next {
-  transform: translateX(100%); /* Move 'next' item to the right */
-}
-
-.carousel__button--prev,
-.carousel__button--next {
-  position: absolute;
-  top:50%;
-  width: 3rem;
-  height: 3rem;
-  background-color: #FFF;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  cursor: pointer; 
-  z-index: 1001; /* Sit on top of everything */
-  border: 1px solid black;
-}
-.carousel__button--prev {
-  left:0;
-}
-.carousel__button--next {
-  right:0;
-}
-.carousel__button--prev::after,
-.carousel__button--next::after {
-  content: " ";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 50%;
-  left: 54%;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-  transform: translate(-50%, -50%) rotate(135deg);
-}
-.carousel__button--next::after {
-  left: 47%;
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-/* Slide Section ends */
-
-
-
 .about-me .box-container{
   display: flex;
   align-items: center;
@@ -454,18 +322,172 @@ h3 {
 }
 
 
-
-.footer{
-  padding:2.5rem 1.5rem;
-  font-size: 2rem;
-  color:var(--black);
-  background:#fff;
-  text-align: center;
+nav {
+  float: right;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  float: left;
+  position: relative;
+}
+nav ul li a {
+  display: block;
+  padding: 0 20px;
+  line-height: 70px;
+  background: #ffffff;
+  color: #463f3f;
+  text-decoration: none;
+  /*
+  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
+  */
+}
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
+nav ul li a:not(:only-child):after {
+  padding-left: 16px;
+  content: ' ▾';
+}
+nav ul li ul li {
+  min-width: 190px;
+}
+nav ul li ul li a {
+  padding: 15px;
+  line-height: 20px;
 }
 
-.footer span{
-  color:var(--pink);
+.nav-dropdown {
+  position: absolute;
+  z-index: 1;
+  /* Guarantees that the dropdown will display on top of any content. */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  display: none;
 }
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  height: 70px;
+  width: 70px;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-mobile {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 15px;
+  }
+  nav ul {
+    display: none;
+  }
+  nav ul li {
+    float: none;
+  }
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+  nav ul li ul li a {
+    padding-left: 30px;
+  }
+}
+#nav-toggle {
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+}
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #463f3f;
+  position: absolute;
+  display: block;
+  content: '';
+  transition: all 300ms ease-in-out;
+}
+#nav-toggle span:before {
+  top: -10px;
+}
+#nav-toggle span:after {
+  bottom: -10px;
+}
+#nav-toggle.active span {
+  background-color: transparent;
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+  .nav-list {
+    display: block !important;
+  }
+}
+/* 
+.navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
+*/
+.navigation {
+  height: 70px;
+  background: #ffffff;
+}
+
+/*
+.nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+*/
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+.brand a,
+.brand a:visited {
+  color: #463f3f;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* media queries  */
@@ -515,22 +537,7 @@ h3 {
     z-index: 1;
   }
 
-  .home{
-    justify-content: center;
-  }
-
-  .home .content{
-    text-align: center;
-  }
-
-  .home .content span{
-    font-size: 2rem;
-  }
-
-  .home .content h3{
-    font-size: 4rem;
-    width:auto;
-  }
+  
 
   .favs .row{
     flex-flow: column;
