@@ -420,17 +420,22 @@ form{
   height: 30px; 
   padding: 0 10px 0 10px;
   border: 1px solid #777;
+  border-radius: 14px;
+  outline: none;
 }
 
 .input-field2{
   width: 400px;
-  height: 190px; 
+  height: 160px; 
   margin-top: 20px;
   border: 1px solid #777;
+  border-radius: 14px;
+  outline: none;
+
 }
 .submit{
-  height: 100%;
-  weight: 100%;
+  padding: 10px;
+  margin-top: 18px;
   background-color: rgb(189, 153, 189);
   border-radius: 25%;
 }
